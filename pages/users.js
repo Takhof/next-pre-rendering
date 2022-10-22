@@ -1,14 +1,14 @@
 import axios from "axios";
+import User from "../components/user.js";
 
-function User({ users }) {
+function UserList({ users }) {
   return (
     <>
       <h1>List of users</h1>
       {users.map((user) => {
         return (
           <div key={user.id}>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
+            <User user={user}></User>
           </div>
         );
       })}
@@ -16,7 +16,7 @@ function User({ users }) {
   );
 }
 
-export default User;
+export default UserList;
 
 export async function getStaticProps() {
   const response = await axios.get(
