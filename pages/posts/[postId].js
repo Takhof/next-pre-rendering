@@ -21,21 +21,18 @@ export default Post;
 
 export async function getStaticProps(context) {
   const { params } = context;
-  const response = await axios.get(
-    `https://jsonplaceholder.typicode.com/posts/${params.postId}`
-  );
-
-  if (response.data.id === 2) {
+  try {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/${params.postId}`
+    );
     return {
-      notFound: true,
+      props: {
+        post: response.data,
+      },
     };
+  } catch (err) {
+    return { notFound: true };
   }
-
-  return {
-    props: {
-      post: response.data,
-    },
-  };
 }
 
 export async function getStaticPaths() {
