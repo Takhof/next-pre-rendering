@@ -7,6 +7,10 @@ function Home() {
       <Link href="/users">
         <a>User Page</a>
       </Link>
+      <div></div>
+      <Link href="/posts">
+        <a>Posts Page</a>
+      </Link>
     </>
   );
 }
