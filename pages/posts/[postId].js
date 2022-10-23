@@ -29,7 +29,17 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths(slug) {
   return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
+    paths: [
+      {
+        params: { postId: "1" },
+      },
+      {
+        params: { postId: "2" },
+      },
+      {
+        params: { postId: "3" },
+      },
+    ],
+    fallback: "blocking",
   };
 }
