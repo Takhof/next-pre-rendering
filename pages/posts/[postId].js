@@ -1,6 +1,12 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 
 function Post({ post }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       <h2>
@@ -19,10 +25,15 @@ export async function getStaticProps(context) {
     `https://jsonplaceholder.typicode.com/posts/${params.postId}`
   );
 
-  const data = await response.data;
+  if (response.data.id === 2) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      post: data,
+      post: response.data,
     },
   };
 }
@@ -31,16 +42,17 @@ export async function getStaticPaths() {
   const response = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"
   );
+
   const data = await response.data;
 
   const paths = data.map((post) => {
     return {
-      params: { postId: `${post.id}` },
+      params: { postId: "1" },
     };
   });
 
   return {
-    paths,
-    fallback: "blocking",
+    paths: [],
+    fallback: true,
   };
 }
