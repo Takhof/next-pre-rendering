@@ -1,0 +1,19 @@
+import { NextApiHandler } from "next";
+
+const handler: NextApiHandler = async (req, res) => {
+  const id = req.query.id;
+  if (secret !== process.env.ON_DEMAND_SECRET_TOKEN) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
+
+  if (!category) return res.status(404).json({ message: "Not Found" });
+
+  try {
+    await res.revalidate(`/news/${category}`);
+    return res.json({ revalidated: true });
+  } catch (err) {
+    return res.status(500).send("Error revalidating");
+  }
+};
+
+export default handler;
