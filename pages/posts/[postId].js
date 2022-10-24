@@ -20,7 +20,7 @@ function Post({ post }) {
 export default Post;
 
 export async function getStaticProps(context) {
-  const { params } = context;
+  const { params, res } = context;
   try {
     const response = await axios.get(
       `https://jsonplaceholder.typicode.com/posts/${params.postId}`

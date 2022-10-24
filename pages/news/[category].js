@@ -25,20 +25,25 @@ function ArticleListByCategory({ articles, category }) {
 export default ArticleListByCategory;
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, req, res, query } = context;
+  res.setHeader("Set-Cookie", ["name=Tom"]);
   const { category } = params;
-  const response = await axios.get(
-    `http://localhost:4000/news?category=${category}`
-  );
+  try {
+    const response = await axios.get(
+      `http://localhost:4000/news?category=${category}`
+    );
 
-  const data = await response.data;
+    const data = await response.data;
 
-  console.log(data);
+    console.log(data);
 
-  return {
-    props: {
-      articles: data,
-      category,
-    },
-  };
+    return {
+      props: {
+        articles: data,
+        category,
+      },
+    };
+  } catch (err) {
+    return { notFound: true };
+  }
 }
