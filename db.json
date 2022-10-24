@@ -1,0 +1,17 @@
+{
+"news":[
+    {
+        "id": 1,
+        "title": "Tom's Daily Life",
+        "description": "Tom is drinking Coffee",
+        "category": "life"
+    },
+    {
+        "id": 2,
+        "title": "Falling Leaves",
+        "description": "It's Autumn and leaves are falling",
+        "categoryh": "season"
+    }
+]
+
+}
