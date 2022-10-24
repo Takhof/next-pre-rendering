@@ -44,12 +44,16 @@ export async function getStaticPaths() {
 
   const paths = data.map((post) => {
     return {
-      params: { postId: "1" },
+      params: { postId: `${post.id}` },
     };
   });
 
   return {
-    paths: [],
-    fallback: true,
+    paths: [
+      {
+        params: { postId: "1" },
+      },
+    ],
+    fallback: "blocking",
   };
 }
