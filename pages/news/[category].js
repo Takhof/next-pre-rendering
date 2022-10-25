@@ -25,7 +25,7 @@ function ArticleListByCategory({ articles, category }) {
 export default ArticleListByCategory;
 
 export async function getServerSideProps(context) {
-  const { params, req, res, query } = context;
+  const { params, res } = context;
   res.setHeader("Set-Cookie", ["name=Tom"]);
   const { category } = params;
   try {

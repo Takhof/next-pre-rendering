@@ -28,5 +28,6 @@ export async function getStaticProps() {
     props: {
       users: data,
     },
+    revakudate: 200,
   };
 }
