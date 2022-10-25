@@ -6,18 +6,24 @@ function EventList({ eventList }) {
   const [events, setEvents] = useState(eventList);
   const router = useRouter();
 
-  const fetchSportsEvents = async () => {
+  const fetchEvents = async (e) => {
+    const category = e.target.value;
     const response = await axios.get(
-      "http://localhost:4000/events?category=sports"
+      `http://localhost:4000/events?category=${category}`
     );
     const data = response.data;
     setEvents(data);
-    router.push("/events?category=sports", undefined, { shallow: true });
+    router.push(`/events?category=${category}`, undefined, { shallow: true });
   };
 
   return (
     <>
-      <button onClick={fetchSportsEvents}>sort by sports</button>
+      <button onClick={fetchEvents} value="sports">
+        sort by sports
+      </button>
+      <button onClick={fetchEvents} value="tech">
+        sort by tech
+      </button>
       <h1>List of events</h1>
       {events.map((event) => {
         return (
