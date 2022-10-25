@@ -1,5 +1,8 @@
 {
+    
+    
 "news":[
+    
     {
         "id": 1,
         "title": "Tom's Daily Life",
@@ -12,6 +15,11 @@
         "description": "It's Autumn and leaves are falling",
         "category": "season"
     }
-]
-
+],
+"dashboard": {
+    "posts": 5,
+    "likes": 100,
+    "followers": 20,
+    "following": 50
+}
 }
