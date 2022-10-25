@@ -28,7 +28,6 @@ function Dashboard() {
       <h2>Following - {dashboardData.following}</h2>
     </div>
   );
-  return;
 }
 
 export default Dashboard;
