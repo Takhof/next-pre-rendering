@@ -1,11 +1,8 @@
 import { NextApiHandler } from "next";
 
-const handler: NextApiHandler = async (req, res) => {
+const handler = async (req, res) => {
   const id = req.query.id;
-  if (secret !== process.env.ON_DEMAND_SECRET_TOKEN) {
-    return res.status(401).json({ message: "Invalid token" });
-  }
-
+  console.log(id.category);
   if (!category) return res.status(404).json({ message: "Not Found" });
 
   try {
